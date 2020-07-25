@@ -18,7 +18,7 @@ function setup() {
   upground=new Ground(610,180,120,10)
   hexagon= new Polygon(100,200,50);
 
-  sling=new SlingShot(hexagon.body,{x:100,y:200}) ;
+  sling=new SlingShot(hexagon.polygon,{x:100,y:200}) ;
 
   cup1=new Box(240,280,25,35);
   cup2=new Box(270,280,25,35);
@@ -57,7 +57,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);  
+  background("red");  
   Engine.update(engine);
   lowground.display();
   upground.display();
@@ -92,10 +92,16 @@ function draw() {
 }
 
 function mouseDragged(){
-  Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
+  Matter.Body.setPosition(hexagon.polygon, {x: mouseX , y: mouseY});
 }
 
 
 function mouseReleased(){
-  slingshot.fly();
+  sling.fly();
 }
+
+ function keyPressed(){
+   if(keyCode===32){
+     sling.attach(hexagon.polygon);
+   }
+ }

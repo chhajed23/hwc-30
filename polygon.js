@@ -8,7 +8,7 @@ class Polygon {
         // this.width = width;
         // this.height = height;
         //this.poly=polygon;
-      this.polygon=Bodies.circle(50,200,20);
+      this.polygon=Bodies.circle(50,200,20,options);
       this.image = loadImage("polygon.png");
       World.add(world,this.polygon);
 
@@ -19,13 +19,13 @@ class Polygon {
     display() {
       //this.body.position.x = mouseX;
       //this.body.position.y = mouseY;
-      var angle = this.body.angle;
+      var angle = this.polygon.angle;
       push();
-      translate(this.body.position.x, this.body.position.y);
+      translate(0,0);
       rotate(angle);
       imageMode(CENTER);
       //fill("yellow")
-      image(this.image,polygon.position.x,polygon.position.y,40,40)
+      image(this.image,this.polygon.position.x,this.polygon.position.y,40,40)
       pop();
 
       

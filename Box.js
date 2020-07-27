@@ -10,34 +10,33 @@ class Box  {
     
     this.width = width;
     this.height = height;
-    //this.image = loadImage("sprites/base.png");
+    this.visibility=255;
+    this.image = loadImage("box1.png");
     World.add(world, this.body);
       //this.image = loadImage("sprites/wood1.png");
     }
     display(){
-      if(this.body.speed < 6){
+      if(this.body.speed < 3){
         push();
         var angle = this.body.angle;
       translate(this.body.position.x, this.body.position.y);
       rotate(angle);
 
-      rectMode(CENTER);
-      fill("yellow")
-      rect( 0, 0, this.width, this.height);
-      //tint(0,153,204,126);
-      // World.remove(world,this.body);
+      imageMode(CENTER);
+      fill("orange")
+      image( this.image,0, 0, this.width, this.height);
+      
       pop();
        }
        else{
          World.remove(world, this.body);
          push();
-         this.Visiblity = this.Visiblity - 5;
-         tint(255,this.Visiblity);
-         
+         this.visibility = this.visibility - 7;
+         tint(255,this.visibility);
+         image(this.image, this.body.position.x, this.body.position.y, this.width, this.height);
          pop();
+
        }
-     
-      
 
       
      
